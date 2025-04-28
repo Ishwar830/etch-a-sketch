@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+#main {
+    display: flex;
+    padding: 40px;
+    justify-content: center;
+}
+
+
 .grid {
     box-sizing: content-box;
     display: flex;
