@@ -1,15 +1,32 @@
 
 const gridContainer = document.querySelector('.grid');
+const gridSizeInfoElement = document.querySelector('.grid-size-info');
+const sizeSliderElement = document.querySelector('input');
 
 const SIZE = 16;    
 
-generateGrid(SIZE);
+updateScreen();
 
 gridContainer.addEventListener('mouseover', (e) => {
     if(e.target.classList.contains('cell')){
         colorCell(e.target);
     }
 })
+
+sizeSliderElement.addEventListener('change', () => {
+    updateScreen();
+});
+
+function updateScreen(){
+    updateSliderInfo();
+    const newSize = Number(sizeSliderElement.value);
+    generateGrid(newSize);
+}
+
+function updateSliderInfo(){
+    const newSize = sizeSliderElement.value;
+    gridSizeInfoElement.textContent = newSize;
+}
 
 function colorCell(cellElement){
     cellElement.style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`; 
